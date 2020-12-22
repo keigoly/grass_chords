@@ -1,0 +1,46 @@
+%aside.l-contents__top
+  %section.l-contents__section.c-window__clear.p-chord__section
+    .p-chord__title
+      %h2
+        =@chord.song.title
+      .p-chord__key
+        = "key of "+ @chord.key
+    .p-chord__review
+      =render "/application/review", chord: @chord
+    .p-chord__info
+      %p.p-chord__text-version
+        =@chord.version + " version"
+      %p.p-chord__text-writer
+        ="by "+ @chord.user.name
+%article.l-contents__main
+  -# .p-chord__pdf-btn
+  -#   =link_to "PDF Download", url:"#"
+  %section.p-chord__wrapper
+    .p-chord__key-change
+      .c-key-change__wrapper
+        .c-key-change__display
+          .key-display--form.c-key-change__form.u-display__hidden{value: "#{@chord.key}"}
+          .c-key-change__present
+            - if ["B","b"].include?(@chord.key[1])
+              = key_of(@chord.key[0])
+              %a{class: "font_base-key c-font__base"}
+                = @chord.key[1]
+            - else
+              = key_of(@chord.key)
+        =render "/application/key-change"
+      .c-key-change__guide << key change!!
+      .c-key-change__close-layer
+        .c-layer__skeleton
+
+    .p-song__score.c-js__key-change.c-js__able
+      - @chord.chordunits.each_with_index do |unit, i|
+        =render "/application/chordunit", i: i
+    .p-chord__manage-score
+      =link_to "Edit", edit_chord_path
+      %a
+        |
+      =link_to "Delete", chord_path, method: :delete, data: { confirm: "本当によろしいですか？" }
+  -# .p-chord__return
+  -#   =link_to "コード譜一覧に戻る", song_path(@chord.song)
+  - breadcrumb :chord_show
+  = render "application/breadcrumbs", layout: "footer"

@@ -1,0 +1,26 @@
+%aside.l-contents__top.l-contents__top--low-volume.l-contents__top--sub
+%article.c-user__position-article
+  %section.c-section__sentence-box
+    .c-user__logo
+      %h2 User Edit
+      %a - ユーザ情報の編集 -
+    .c-user__form
+      =form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+        .c-form__area
+          =f.text_field :name, placeholder:"名前", class:"c-form__textbox c-user__textbox"
+          =f.collection_select :place_id, Place.all.where.not(id: 0), :id, :name,  {include_blank: "主な活動拠点を選ぶ"},  class: "c-form__selectbox c-user__selectbox"
+          =f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メール", class:"c-form__textbox c-user__textbox"
+          %a 6文字以上
+          =f.password_field :password, autocomplete: "new-password", placeholder: "新しいパスワード", class:"c-form__textbox c-user__textbox"
+          =f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "新しいパスワード(確認)", class:"c-form__textbox c-user__textbox"
+          %a パスワードを変更する際は現在のパスワードを入力してください
+          =f.password_field :current_password, autocomplete: "current-password", placeholder: "現在のパスワード", class:"c-form__textbox c-user__textbox"
+        .c-form__area
+          =f.submit "登録", class:"c-form__btn c-form__btn--login"
+        %hr
+      .c-form__area
+        = button_to "ユーザを削除する", registration_path(resource_name), data: { confirm: "二度と復旧できません。本当によろしいですか？" }, method: :delete, class:"c-form__btn c-form__btn-blue"
+    %figure
+      =image_tag "/images/fiddle.png", class: "c-section__image-fiddle"
+  - breadcrumb :user_edit
+  = render "application/breadcrumbs", layout: "footer"

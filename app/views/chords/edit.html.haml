@@ -1,0 +1,48 @@
+
+%aside.l-contents__top
+  %section.l-contents__section.c-window__clear.p-chord__section
+    .p-chord-new__title.js-judge__edit-chord
+      %h2 Edit Chord Score
+      .p-chord-new__subtitle -コード譜を編集する-
+
+=form_with url: chord_path, method: :patch, model: @chord, local: true do |f|
+  %article.l-contents__main
+    %section.c-window__skeleton
+      .p-chord-new__song
+        .c-song-candidate__wrapper
+
+          .c-song-candidate__lists.c-window__clear-black.u-display__hidden
+
+      .content__search-result
+      .p-chord-new__version.c-form__search-box
+        .p-chord-new__version--form
+          =f.text_field :version, placeholder: "コード譜の名前", class: "c-form__textbox"
+        .p-chord-new__version--help.form__textbox
+          %a version
+    %section.p-chord__wrapper
+      .p-chord__key-change
+        .c-key-change__wrapper
+          .c-key-change__display
+            = f.text_field :key, id: "key_name", class: "key-display--form c-key-change__form u-display__hidden", value: "#{@chord.key}"
+            .c-key-change__present
+              - if ["B","b"].include?(@chord.key[1])
+                = key_of(@chord.key[0])
+                %a{class: "font_base-key c-font__base"}
+                  = @chord.key[1]
+              - else
+                = key_of(@chord.key)
+          =render "/application/key-change"
+        .c-key-change__guide << key change!!
+        .c-key-change__close-layer
+          .c-layer__skeleton
+      .p-song__score.c-js__key-change.c-js__disable
+        -@chord.chordunits.each_with_index do |chordunit, i|
+          =render "/application/chordunit", i: i
+        =render "/application/chordunit-form", f: f
+    .content__registration
+      =f.submit "登録", class:"c-form__btn c-form__btn--registration"
+    - breadcrumb :chord_edit
+    = render "application/breadcrumbs", layout: "footer"
+    .p-chord-new__editor-btn
+      >> Editor
+=render "/application/chord-editor"

@@ -1,0 +1,191 @@
+.c-form__area {
+  margin: 10px 0;
+  padding: 10px;
+}
+
+.c-form__attributes {
+  // layout
+  display: flex;
+  flex-wrap: wrap;
+
+  // other
+  font-family: "Nunito", sans-serif;
+}
+
+.c-form__attribute {
+  // layout
+  margin-top: 8px;
+  margin-right: 8px;
+  padding: 5px;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+
+  // button design
+  color: $color-font-black;
+  background-color: $color-btn-normal;
+  box-shadow: 2px 2px 4px #444444;
+}
+
+.c-form__flex {
+  display: flex;
+}
+
+// define serach window and button
+.c-form__search-box {
+  // ya have to need?
+  display: flex;
+  justify-content: stretch;
+  align-items: center;
+
+  width: 100%;
+  background-color: $color-btn-normal;
+  border-radius: 5px;
+}
+
+.c-form__textbox {
+  padding: 0 8px;
+  height: 1.8em;
+
+  width: 100%;
+
+  border-radius: 5px;
+  border: none;
+  background-color: $color-btn-normal;
+  &::placeholder {
+    color: $color-icon-gray;
+  }
+  &--search {
+    width: calc(100% - 45px);
+  }
+}
+
+.c-form__selectbox {
+  padding: 0 8px;
+  height: 1.8em;
+
+  width: 100%;
+  padding-left: -2px;
+
+  border-radius: 5px;
+  border: none;
+  background-color: $color-btn-normal;
+}
+
+.c-form__position--box-btn {
+  // adjsut position between search btn and icon
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.c-form__btn {
+  cursor: pointer;
+  height: 27px;
+  width: 45px;
+  border-radius: 5px;
+
+  background-color: $color-theme-red;
+  color: $color-font-white;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
+
+  &--registration {
+    height: 38px;
+    width: 82px;
+
+    font-size: 20px;
+  }
+
+  &--login {
+    height: 30px;
+    width: 80px;
+
+    font-size: 14px;
+  }
+}
+
+.c-form__btn-area {
+  display: flex;
+  justify-content: space-between;
+}
+
+.c-form__btn-blue {
+  width: 140px;
+  background-color: $color-accent-blue;
+  text-align: center;
+
+  & a {
+    line-height: 30px;
+    text-decoration: none;
+    color: $color-font-white;
+  }
+}
+
+.c-form__btn-icon {
+  color: $color-font-white;
+  position: absolute;
+  left: 14px;
+}
+
+// adjsut position between blind check box and icon, and size inner icon.
+.c-form__box--icon_jam {
+  position: relative;
+}
+
+.c-form__inner--icon-jam {
+  position: absolute;
+  left: 5px;
+}
+
+.c-form__box--icon_standard {
+  position: relative;
+}
+.c-form__inner--icon-standard {
+  // position
+  position: absolute;
+  left: 4px;
+  // size
+  font-size: 16px;
+}
+
+.c-form__box--icon_beginner {
+  position: relative;
+}
+.c-form__inner--icon-beginner {
+  // position
+  position: absolute;
+  top: 7px;
+  left: 6px;
+  // size
+  height: 20px;
+  width: 20px;
+}
+
+.c-form__box--icon_vocal {
+  position: relative;
+}
+.c-form__inner--icon-vocal {
+  // position
+  position: absolute;
+  left: 9px;
+  // size
+  font-size: 19px;
+}
+
+.c-form__box--icon_instrumental {
+  position: relative;
+}
+.c-form__inner--icon-instrumental {
+  // position
+  position: absolute;
+  left: 9px;
+  // size
+  font-size: 19px;
+}
+
+.c-form__icon-blank {
+  position: relative;
+  height: 20px;
+  width: 20px;
+}

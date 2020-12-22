@@ -1,0 +1,27 @@
+.p-search-result__wrapper
+%article.p-search-result__article
+  %section.p-search-result__section.c-window__clear
+    .c-search__title 練習している曲から探す
+    =form_with  url: search_users_path, method: :get, local: true do |f|
+      =render "application/search_user", f: f
+    %hr{color: "black", size: "1px"}
+    .p-search-result__results
+      -if @users.present?
+        - @users.each do |user|
+          =link_to user_path(user) do
+            .p-search-result__result.p-search-user__result
+              .p-search-user__name
+                =user.name
+              .u-space__bottom-10px
+              .p-user__info-list
+                .p-user__info-item 活動拠点：
+                .p-user__info-dat
+                  - if user.place.present?
+                    =user.place.name
+                  - else
+                    (登録なし)
+        = pagy_nav(@pagy).html_safe
+      - else
+        ユーザーが見つかりませんでした
+
+

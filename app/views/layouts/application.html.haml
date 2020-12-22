@@ -1,0 +1,39 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1"}
+    %link{href: "https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;500&family=Nunito:wght@400;700&family=Rum+Raisin&family=Volkhov&display=swap", rel: "stylesheet"}
+    %title Grass Chords - Bluegrassジャムセッション 支援サービス
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag    'application', media: 'all', type: 'text/css'
+    = javascript_include_tag 'application'
+    = favicon_link_tag()
+  %body
+    =csrf_meta_tag
+    %header.l-header
+      %h1
+        =link_to "Grass Chords", root_path, class:"l-header__logo"
+      .l-header__menu
+        .l-header__search-btn
+          %i.fas.fa-search.l-search_btn
+        .l-header__opn-box.u-header__margin.c-js__menu-cls
+          %span
+          %span
+          %span
+
+    %p.l-header__error= flash[:error]
+    %p.l-header__alert= flash[:alert]
+    %p.l-header__notice= flash[:notice]
+
+    .l-contents
+      %main.l-main
+        =yield
+      %navi.l-navi.c-js__navi__fade-in
+        =render "/layouts/navi"
+      %navi.l-contents__global-search.c-js__search__fade-in
+        =render "/layouts/global_search"
+    %footer.l-footer
+      %h1.u-size__footer-copyright ©2020 Grass Chords
+      %h1.u-size__footer-name by Shota Imoto

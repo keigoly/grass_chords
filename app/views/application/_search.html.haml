@@ -1,0 +1,8 @@
+.c-form__search-box
+  =f.text_field :keyword, value: (params[:keyword] if params[:keyword]),  class: "c-form__textbox c-form__textbox--search c-js__search-text", placeholder: "曲名で検索"
+  =f.label :search, class:"c-search__send-btn c-form__position--box-btn" do
+    .c-form__btn
+    %i.fas.fa-search.c-form__btn-icon
+    =f.submit "", class: "c-form__btn u-color__skeleton-cover"
+=render "/application/search-attributes", f: f
+

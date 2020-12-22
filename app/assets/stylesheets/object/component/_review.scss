@@ -1,0 +1,48 @@
+.c-review {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.c-review__btn {
+  height: 30px;
+  width: 120px;
+  padding: 6px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: $color-btn-normal;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
+  font-size: 11px;
+
+  color: $color-font-black;
+}
+
+.c-review__btn--red {
+  background-color: $color-theme-red;
+  color: $color-font-white;
+}
+
+.c-review__amount {
+  margin: 5px;
+}
+
+.c-review__text {
+  white-space: nowrap;
+}
+
+.c-review__link {
+  text-decoration: none;
+}
+@media screen and (min-width: 481px) {
+  .c-review__link {
+    width: 40%;
+    font-size: 14px;
+  }
+  .c-review__btn {
+    width: 100%;
+    max-width: 260px;
+  }
+}

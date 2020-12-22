@@ -1,0 +1,46 @@
+.p-chord-new__song {
+  font-size: 15px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.p-chord-new__version {
+  display: flex;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.p-chord-new__version--form {
+  width: 100%;
+}
+
+.p-chord-new__version--help {
+  color: $color-icon-gray;
+  padding: 0 8px;
+}
+
+.p-chord-new__textbox {
+  width: 100%;
+}
+
+.p-chord-new__editor-btn {
+  //layout
+  width: 97px;
+  height: 37px;
+
+  position: fixed;
+  bottom: 80px;
+  right: 50px;
+
+  // btn design
+  border-radius: 20px;
+  color: $color-font-white;
+  background-color: $color-accent-blue;
+
+  cursor: pointer;
+
+  // text
+  font-size: 16px;
+  text-align: center;
+  line-height: 37px;
+}

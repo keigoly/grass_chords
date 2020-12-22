@@ -1,0 +1,49 @@
+.c-review{class: "c-review-#{chord.id}"}
+  - if user_signed_in?
+    -if Practice.exists?(chord_id: chord.id, user_id: current_user.id)
+      .c-review__link.c-js__practice
+        .c-review__btn.c-review__btn--red.c-js__review.u-cursor__pointer
+          .c-review__icon
+            %i.fas.fa-lightbulb.c-review__icon-practice
+          .c-review__amount
+            =chord.practices_count
+          .c-review__text 練習してる！
+    - else
+      .c-review__link.c-js__not-practice
+        .c-review__btn.c-js__review.u-cursor__pointer
+          .c-review__icon
+            %i.fas.fa-lightbulb.c-review__icon-practice
+          .c-review__amount
+            =chord.practices_count
+          .c-review__text 練習してる？
+  -else
+    .c-review__btn.c-js__review
+      .c-review__icon
+        %i.fas.fa-lightbulb.c-review__icon-practice
+      .c-review__amount
+        =chord.practices_count
+      .c-review__text 練習してる？
+  - if user_signed_in?
+    - if Like.exists?(chord_id: chord.id, user_id: current_user.id)
+      .c-review__link.c-js__like
+        .c-review__btn.c-review__btn--red.c-js__review.u-cursor__pointer
+          .c-review__icon
+            %i.fas.fa-heart
+          .c-review__amount
+            =chord.likes_count
+          .c-review__text 信頼できる！
+    - else
+      .c-js__not-like.c-review__link
+        .c-review__btn.c-js__review.u-cursor__pointer
+          .c-review__icon
+            %i.fas.fa-heart
+          .c-review__amount
+            =chord.likes_count
+          .c-review__text 信頼できる？
+  -else
+    .c-review__btn.c-js__review
+      .c-review__icon
+        %i.fas.fa-heart
+      .c-review__amount
+        =chord.likes_count
+      .c-review__text 信頼できる？
